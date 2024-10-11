@@ -1,69 +1,87 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(QuotesApp());
+  runApp(MyApp());
 }
 
-class QuotesApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: QuotesScreen(),
+      home: PaymentScreen(),
     );
   }
 }
 
-class QuotesScreen extends StatefulWidget {
-  @override
-  _QuotesScreenState createState() => _QuotesScreenState();
-}
-
-class _QuotesScreenState extends State<QuotesScreen> {
-  List<String> quotes = [
-    "A lot of times people look at the negative side of what they feel they can't do. I always look on the positive side of what I can do. - Chuck Norris",
-    "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
-    "Life is what happens when you're busy making other plans. - John Lennon",
-    "The way to get started is to quit talking and begin doing. - Walt Disney",
-    "Don't watch the clock; do what it does. Keep going. - Sam Levenson"
-  ];
-
-  int index = 0;
-
-  void _getNextQuote() {
-    setState(() {
-      index = (index + 1) % quotes.length;
-    });
-  }
-
+class PaymentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Quotes'),
-        backgroundColor: Colors.blue,
+        title: Text('E-Payment'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+          
+          },
+        ),
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                quotes[index],
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 24,
-                  fontStyle: FontStyle.italic,
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Pay',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 20),
+            GestureDetector(
+              onTap: () {
+              
+              },
+              child: Container(
+                padding: EdgeInsets.all(16.0),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: Row(
+                  children: [
+                
+         Container(
+             decoration: BoxDecoration(
+             color: Colors.white,  
+             shape: BoxShape.circle, 
+  ),
+                 padding: EdgeInsets.all(10),  
+                     child: ClipOval(
+                     child: Image.asset(
+                     'image/9e1e8dc1064bb7ac5550ad684703fb30.png',  
+                      width: 40,
+                      height: 40,
+                      fit: BoxFit.cover,  
+    ),
+  ),
+),
+
+                    SizedBox(width: 20),
+              
+                    Text(
+                      'Tuition fees',
+                      style: TextStyle(
+                       fontSize: 18,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              SizedBox(height: 50),
-              ElevatedButton(
-                onPressed: _getNextQuote,
-                child: Text('Get Quote'),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
